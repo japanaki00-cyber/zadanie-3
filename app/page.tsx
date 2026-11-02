@@ -1,69 +1,114 @@
-import Image from "next/image";
+import ProductList from "@/components/catalog/ProductList";
+import type { Product } from "@/types/product";
 
-export default function Home() {
+const products: Product[] = [
+  {
+    id: 1,
+    title: "Кофе Бразилия Сантос",
+    description: "Зёрна средней обжарки с нотами шоколада и ореха, 250 г.",
+    price: 690,
+    category: "Кофе",
+    inStock: true,
+  },
+  {
+    id: 2,
+    title: "Кофе Эфиопия Иргачефф",
+    description: "Светлая обжарка, цветочный аромат и лёгкая кислинка, 250 г.",
+    price: 790,
+    category: "Кофе",
+    inStock: true,
+  },
+  {
+    id: 3,
+    title: "Кофе Колумбия Супремо",
+    description: "Сбалансированный вкус с карамельной сладостью, 250 г.",
+    price: 720,
+    category: "Кофе",
+    inStock: false,
+  },
+  {
+    id: 4,
+    title: "Молотый кофе для турки",
+    description: "Мелкий помол, насыщенный вкус и густая пенка, 200 г.",
+    price: 450,
+    category: "Кофе",
+    inStock: true,
+  },
+  {
+    id: 5,
+    title: "Чай Эрл Грей",
+    description: "Классический чёрный чай с бергамотом, 100 г.",
+    price: 380,
+    category: "Чай",
+    inStock: true,
+  },
+  {
+    id: 6,
+    title: "Чай Сенча",
+    description: "Японский зелёный чай со свежим травяным вкусом, 100 г.",
+    price: 420,
+    category: "Чай",
+    inStock: true,
+  },
+  {
+    id: 7,
+    title: "Матча церемониальная",
+    description: "Порошковый зелёный чай для латте и напитков, 50 г.",
+    price: 950,
+    category: "Чай",
+    inStock: true,
+  },
+  {
+    id: 8,
+    title: "Френч-пресс 600 мл",
+    description: "Стеклянная колба и металлический фильтр для заваривания.",
+    price: 1900,
+    category: "Аксессуары",
+    inStock: true,
+  },
+  {
+    id: 9,
+    title: "Кофемолка ручная",
+    description: "Керамические жернова и регулировка степени помола.",
+    price: 2900,
+    category: "Аксессуары",
+    inStock: false,
+  },
+  {
+    id: 10,
+    title: "Керамическая чашка",
+    description: "Чашка 250 мл с двойными стенками, держит тепло.",
+    price: 850,
+    category: "Посуда",
+    inStock: true,
+  },
+  {
+    id: 11,
+    title: "Термокружка 450 мл",
+    description: "Нержавеющая сталь, до 8 часов сохраняет температуру.",
+    price: 1500,
+    category: "Посуда",
+    inStock: true,
+  },
+  {
+    id: 12,
+    title: "Питчер для молока",
+    description: "Стальной кувшин 350 мл для взбивания молока.",
+    price: 1100,
+    category: "Аксессуары",
+    inStock: true,
+  },
+];
+
+export default function CatalogPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="mx-auto max-w-6xl px-4 py-10">
+      <h1 className="text-3xl font-bold">Каталог товаров</h1>
+      <p className="mt-2 text-muted-foreground">
+        Кофе, чай и аксессуары для вашего дома
+      </p>
+
+      <ProductList products={products} />
+    </main>
   );
 }
